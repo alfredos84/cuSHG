@@ -1,28 +1,28 @@
 // * Author name: Alfredo Daniel Sanchez
 // * email:               alfredo.daniel.sanchez@gmail.com
 
-#include "headers/Libraries.h"						// Required libraries
+#include "headers/Libraries.h"				// Required libraries
 
 // Datatypes for real and complex numbers
 using real_t = float;
 using complex_t = cufftComplex;
 
 // Spatial grid number of points
-__constant__ const uint NX	= 128;				// Number of pints in X
-__constant__ const uint NY		= 128;				// Number of pints in Y
-__constant__ const uint NZ	= 100;				// Number of points in Z
+__constant__ const uint NX	= 128;			// Number of pints in X
+__constant__ const uint NY	= 128;			// Number of pints in Y
+__constant__ const uint NZ	= 100;			// Number of points in Z
 __constant__ const uint NXY	= NX * NY;		// Number of points in Z
-__constant__ const uint TSIZE	= NX*NY*NZ;	// Number of points in full 3D-grid
+__constant__ const uint TSIZE	= NX*NY*NZ;		// Number of points in full 3D-grid
 
 // Memory size for vectors and matrices
-const size_t nBytes2Dr = sizeof(real_t) * NXY;			// real 2D 
-const size_t nBytes2Dc = sizeof(complex_t) * NXY;		// complex 2D
-const size_t nBytes3Dr = sizeof(real_t) * TSIZE;			// real 3D 
+const size_t nBytes2Dr = sizeof(real_t) * NXY;		// real 2D 
+const size_t nBytes2Dc = sizeof(complex_t) * NXY;	// complex 2D
+const size_t nBytes3Dr = sizeof(real_t) * TSIZE;	// real 3D 
 
 const uint BLKX      = 16;	// Block dimensions for kernel functions
 const uint BLKY      = 16;
 
-#include "headers/PackageLibraries.h"			// Required package libraries
+#include "headers/PackageLibraries.h"	// Required package libraries
 
 int main(int argc, char *argv[]){
 	std::cout << "#######---SHG efficiency calculator---#######\n\n" << std::endl;
@@ -45,11 +45,11 @@ int main(int argc, char *argv[]){
 	// Pump
 	real_t Power		= atof(argv[1]);	// Pump power [W]
 	real_t waist		= atof(argv[2]);	// Initial beam waist radius [μm]
-	real_t focalpoint	= 0.5*LZ;			// Focal point at z = Lcr/2[μm]
+	real_t focalpoint	= 0.5*LZ;		// Focal point at z = Lcr/2[μm]
 	
 	// Thermal properties and oven temperatures
-	real_t Temp			= atof(argv[3]);	// Initial temperature [ºC]
-	real_t T_inf		= 25;						// Temp environment
+	real_t Temp		= atof(argv[3]);	// Initial temperature [ºC]
+	real_t T_inf		= 25;			// Temp environment
 	real_t Tpeltier	= atof(argv[3]);		// Peltier 1
 	
 	// Set 'save_only_last = true' for users interested only in calculating the output efficiency. 
@@ -83,8 +83,8 @@ int main(int argc, char *argv[]){
 	
 	////////////////////////////////////////////////////////////////////////////////////////
 	// 4. Reset the GPU and finish simulation timing
-	
-	cudaDeviceReset();		std::cout << "\n\nDevice reset" << std::endl;
+	std::cout << "\n\nDevice reset" << std::endl;
+	cudaDeviceReset();		
 	
 	double iElaps = seconds() - iStart;	// finish timing
 	TimingCode( iElaps); // print time
@@ -100,7 +100,8 @@ int main(int argc, char *argv[]){
 		outputFile.close();
 		
 		std::cout << "Data successfully written to the end of the file." << std::endl;
-	} else {
+	} 
+	else {
 		std::cerr << "Unable to open the file for writing." << std::endl;
 	}
 	
