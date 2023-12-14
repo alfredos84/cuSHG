@@ -83,6 +83,7 @@ int main(int argc, char *argv[]){
 	
 	////////////////////////////////////////////////////////////////////////////////////////
 	// 4. Reset the GPU and finish simulation timing
+
 	std::cout << "\n\nDevice reset" << std::endl;
 	cudaDeviceReset();		
 	
