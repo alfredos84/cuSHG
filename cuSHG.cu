@@ -50,7 +50,7 @@ int main(int argc, char *argv[]){
 	// Thermal properties and oven temperatures
 	real_t Temp		= atof(argv[3]);	// Initial temperature [ºC]
 	real_t T_inf		= 25;			// Temp environment
-	real_t Tpeltier	= atof(argv[3]);		// Peltier 1
+	real_t Tpeltier		= atof(argv[3]);	// Peltier 1
 	
 	// Set 'save_only_last = true' for users interested only in calculating the output efficiency. 
 	// Otherwise, 'solver->run(/*args*/)' save the fields in the NZ slices, increasing the number of output files.
