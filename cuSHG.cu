@@ -1,5 +1,5 @@
 // * Author name: Alfredo Daniel Sanchez
-// * email:               alfredo.daniel.sanchez@gmail.com
+// * email:       alfredo.daniel.sanchez@gmail.com
 
 #include "headers/Libraries.h"				// Required libraries
 
