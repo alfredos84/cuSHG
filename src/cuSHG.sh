@@ -7,22 +7,26 @@
 TIMEFORMAT='It took %0R seconds.' 
 time { 
 
-clear                                # Clear screen
-rm *.dat                             # This removes all .dat files in the current folder. Comment this line for safe.
-rm cuSHG                           # This removes a previuos executable file (if it exist)
+clear      # Clear screen
+rm *.dat   # This removes all .dat files in the current folder. Comment this line for safe.
+rm cuSHG   # This removes a previuos executable file (if it exist)
 
 
 #####################################################################
 # -----Compilation-----
-# Notice that for computing thermal profile user must use -DTHERMAL preprocessor variable in the compilation.
- 
+# There are two compilation modes: with and without thermal calculations. To set the thermal calculations
+# define the preprocessor variable -DTHERMAL in the compilation line.
+
+# Uncomment the compilation line in line 22 for the inclusion of thermal calculations and comment the 
+# compilation line in line 27.
+# nvcc cuSHG.cu -DTHERMAL --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG
+# FOLDERSIM="Simulations_T""
+
+# Uncomment the compilation line in line 27 for the exclusion of thermal calculations and comment the 
+# compilation line in line 22.
 nvcc cuSHG.cu --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG 
 FOLDERSIM="Simulations"
 
-
-
-# nvcc cuSHG.cu -DTHERMAL --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG
-# FOLDERSIM="Simulations_T_variable_T""
 
 # There are three flags specific for CUDA compiler:
 # --gpu-architecture=sm_75: please check your GPU card architecture (Ampere, Fermi, Tesla, Pascal, Turing, Kepler, etc) 
