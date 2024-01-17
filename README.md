@@ -41,9 +41,9 @@ In the `cuSHG.sh` file you will find two different the command lines for the com
 ```
 nvcc cuSHG.cu -DTHERMAL --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG
 ```
-that includes the thermal calculations, and
+that includes the thermal calculations by using the preprocessor variable `THERMAL`, and
 ```
-nvcc cuSHG.cu -DTHERMAL --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG
+nvcc cuSHG.cu --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG
 ```
 that does not include thermal calculations (this mode is faster than the first one).
 Currently, there are available two crystals, namely, MgO:PPLN and MgO:sPPLT. 
