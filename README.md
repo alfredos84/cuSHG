@@ -16,11 +16,13 @@ To run simulations using the package clone this project typing in a terminal
 ```
 git clone https://github.com/alfredos84/cuSHG.git
 ```
-Once the project was cloned, the user will find a parent folder `cuSHG` containing two other
-- `src`: contains the main file `cuSHG.cu`, the headers folder, and the bash file `cuSHG.sh` used to compile and execute the package by passing several simulations parameters.
-- `src/headers`: this folder contains the headers files needed to execute the package.
+Once the project was cloned, the user will find a parent folder `cuSHG` that contains: 
+- `cuSHG/src` which has the main file `cuSHG.cu` and the bash file `cuSHG.sh` used to compile and execute the package by passing several simulations parameters, and
+- `cuSHG/src/headers` which has the headers files needed to execute the package.
 
-### Bash file `src/cuSHG.sh`
+Note: the cloned repository is usually created at `home` folder in your Linux System.
+
+### Bash file `cuSHG.sh`
 
 The bash file is mainly used to massively perform simulations by passing the main file different parameters such as pump power, beam waist, oven temparture, etc.
 Before starting the user has to allow the system execute the bash file. To do that type in the terminal
