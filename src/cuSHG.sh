@@ -17,7 +17,7 @@ rm cuSHG                           # This removes a previuos executable file (if
 # Notice that for computing thermal profile user must use -DTHERMAL preprocessor variable in the compilation.
  
 nvcc cuSHG.cu --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG 
-FOLDERSIM="Simulations_T_variable"
+FOLDERSIM="Simulations"
 
 
 
