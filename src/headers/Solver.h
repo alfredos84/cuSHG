@@ -278,7 +278,7 @@ void Solver::CWES( Efields *A, Tfield *T, PhaseMatching *DK, real_t Temp, bool s
 	real_t z = 0.0;
 	uint s = 0;
 	while( s < NZ) {
-		std::cout << "Completed " << s*100/NZ << "%" << "\t\r" << std::flush;
+		std::cout << "\n\nSolving Coupled-Wave Equations (CWEs): completed " << s*100/NZ + 1 << "%" << "\t\r" << std::flush;
 		if(save_only_last){// save fields in the last slice (save_only_last = true)
 			if( s == NZ-1 ){
 				// 				std::cout << "Saving only last slice" << std::endl;
@@ -344,7 +344,7 @@ void Solver::run( real_t Power, real_t waist, real_t focalpoint, real_t Temp, re
 			{	// Check temperature convergence every chkconv iterations
 				if (counter_T > 0) aux_sum = Reduced_sum;
 				Reduced_sum = T->checkConvergence();
-				std::cout << "\u03A3|Tf-Ti|²/N³ at #" << counter_T << " iteration is: " << Reduced_sum << std::endl;
+				std::cout << "\u03A3|Tf-Ti|²/N³ at #" << counter_T << " iteration is: " << Reduced_sum << "\t\r" << std::flush;
 				// check if reduced_sum reaches constant value
 				if ( Reduced_sum==aux_sum ) Reduced_sum = 0.5*tol;
 				// saveTensorRealGPU ( T->Tfinal, "Tfinal" );
@@ -361,7 +361,7 @@ void Solver::run( real_t Power, real_t waist, real_t focalpoint, real_t Temp, re
 		A->setNoisyField();
 		A->setPropagators( T->Tfinal );
 		
-		std::cout << "\n\nSolving Coupled-Wave Equations (CWEs)...\n" << std::endl;
+		// Solving Coupled-Wave Equations (CWEs)
 		this->CWES( A, T, DK, Temp, save_only_last );
 		
 		if (counter_T == 1 and global_count != 0) global_count = num_of_iter;
