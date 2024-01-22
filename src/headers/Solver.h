@@ -278,6 +278,7 @@ void Solver::CWES( Efields *A, Tfield *T, PhaseMatching *DK, real_t Temp, bool s
 	real_t z = 0.0;
 	uint s = 0;
 	while( s < NZ) {
+		std::cout << "Completed " << s*100/NZ << "%" << "\t\r" << std::flush;
 		if(save_only_last){// save fields in the last slice (save_only_last = true)
 			if( s == NZ-1 ){
 				// 				std::cout << "Saving only last slice" << std::endl;
@@ -352,7 +353,7 @@ void Solver::run( real_t Power, real_t waist, real_t focalpoint, real_t Temp, re
 			
 			counter_T++;            
 		}
-		std::cout << counter_T << " iterations -> steady-state." << std::endl;
+		std::cout << counter_T << " iterations -> steady-state." << "\t\r" << std::flush;
 		
 		// Set inicial conditions for electric fields
 		DK->setDKFromTemperature( T );	// For simulations with thermal calculations
