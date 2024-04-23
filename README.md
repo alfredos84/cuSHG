@@ -39,11 +39,11 @@ When finished a new folder named in the bash variable `FOLDERSIM` will have been
 
 In the `cuSHG.sh` file you will find two different the command lines for the compilation:
 ```
-nvcc cuSHG.cu -DTHERMAL --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG
+nvcc cuSHG.cu -DTHERMAL --gpu-architecture=sm_XX -lcufftw -lcufft -o cuSHG
 ```
 that includes the thermal calculations by using the preprocessor variable `THERMAL`, and
 ```
-nvcc cuSHG.cu --gpu-architecture=sm_75 -lcufftw -lcufft -o cuSHG
+nvcc cuSHG.cu --gpu-architecture=sm_XX -lcufftw -lcufft -o cuSHG
 ```
 that does not include thermal calculations (this mode is faster than the first one).
 Currently, there are available two crystals, namely, MgO:PPLN and MgO:sPPLT. 
@@ -65,7 +65,7 @@ It was written in this way to make easier performing simulations massively.
 This package returns a set of `.dat` files with the fundamental (pump) and SH (signal) electric fields, separated into real and imaginary parts.
 
 ### GPU architecture
-Make sure you know your GPU architecture before compiling and running simulations. For example, pay special attention to the sm_75 flag defined in the provided `cuSHG.sh` file. 
+Make sure you know your GPU architecture before compiling and running simulations. For example, pay special attention to the sm_XX flag defined in the provided `cuSHG.sh` file. 
 That flag might not be the same for your GPU since it corresponds to a specific architecture. For instance, I tested this package using two different GPUs:
 1. Nvidia Geforce MX250: architecture -> Pascal -> flag: sm_60
 2. Nvidia Geforce GTX1650: architecture -> Turing -> flag: sm_75
