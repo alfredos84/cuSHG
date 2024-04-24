@@ -1,7 +1,7 @@
 # cuSHG package
 
 is a CUDA-based toolkit for simulating focused Gaussian beams second-harmonic generation (SHG) effciency using the coupled-wave equations (CWEs) that well-describe the three wave mixing (TWM) processes in a second-order nonlinear media. 
-CUDA programming allows us to implement parallel computing in order to speed up calculations that typically require a considerable computational demand. Users without a GPU can visit the following repository to download equivalent code that runs on CPU: https://github.com/alfredos84/SHG_Focused_Gaussian_Beams. 
+CUDA programming allows us to implement parallel computing in order to speed up calculations that typically require a considerable computational demand. 
 
 The provided software implements a solver for the CWEs including diffraction terms, linear absorption and nonlinear absorption and thermal evolution. The package is restricted to use it in the continuos-wave (CW) regime.
 This code implements a scheme based on Split-Step Fourier Method (SSFM).
@@ -9,6 +9,9 @@ This code implements a scheme based on Split-Step Fourier Method (SSFM).
 For running this package is necessary to have a GPU in your computer and installed the CUDA drivers and the CUDA-TOOLKIT as well. 
 To install the CUDA driver on a Linux system please visit: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
 
+## Users without GPU
+
+Users without a GPU can visit the following repository to download equivalent code that runs on CPU: https://github.com/alfredos84/SHG_Focused_Gaussian_Beams. 
 
 ## Setup and execution
 
